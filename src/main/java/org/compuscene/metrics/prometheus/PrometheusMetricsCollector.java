@@ -970,12 +970,11 @@ public class PrometheusMetricsCollector {
         timer.observeDuration();
     }
     private void registerNumberOfShardsPerNode() {
-        catalog.registerNodeGauge("node_shards_number", "Node shards");
+        catalog.registerNodeGauge("node_shards_number", "node shards");
     }
     public void updateNumberOfShardsPerNode(Tuple<String, String> nodeInfo,ClusterStateResponse clusterStateResponse,DiscoveryNode node) {
         
         final Map<String, Integer> allocs = new HashMap<>();
-        //Metadata m = clusterStateResponse.getState().getMetadata();
         if(clusterStateResponse.getState().routingTable().allShards()!=null){
             for (ShardRouting shard : clusterStateResponse.getState().routingTable().allShards()) {
                 String nodeId = "UNASSIGNED";
@@ -988,9 +987,9 @@ public class PrometheusMetricsCollector {
             }
           
             int shardCount = allocs.getOrDefault(node.getId(), 0);
-           // if(nodeInfo != null){ 
+           
                 catalog.setNodeGauge(nodeInfo,"node_shards_number", shardCount);     
-       // }
+       
         }
 
     }

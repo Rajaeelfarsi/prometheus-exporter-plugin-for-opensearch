@@ -103,7 +103,7 @@ public class RestPrometheusMetricsAction extends BaseRestHandler {
                 }
                 @Override
                 public void onFailure(Exception e) {
-                    //listener.onFailure(new OpenSearchException("Cluster state request failed", e));
+                   
                 }
             };
 
