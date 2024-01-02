@@ -970,7 +970,7 @@ public class PrometheusMetricsCollector {
         timer.observeDuration();
     }
     private void registerNumberOfShardsPerNode() {
-        catalog.registerNodeGauge("node_shards_number", "node shards");
+        catalog.registerNodeGauge("nodes_shards_number", "node shards");
     }
     public void updateNumberOfShardsPerNode(Tuple<String, String> nodeInfo,ClusterStateResponse clusterStateResponse,DiscoveryNode node) {
         
@@ -988,7 +988,7 @@ public class PrometheusMetricsCollector {
           
             int shardCount = allocs.getOrDefault(node.getId(), 0);
            
-                catalog.setNodeGauge(nodeInfo,"node_shards_number", shardCount);     
+                catalog.setNodeGauge(nodeInfo,"nodes_shards_number", shardCount);     
        
         }
 
